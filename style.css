@@ -1,0 +1,146 @@
+/* Global styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0a0f1d;
+    color: #f5f5f5;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Header */
+.header {
+    background: linear-gradient(135deg, #0a0f1d 0%, #14213d 100%);
+    padding: 2rem 0;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo {
+    width: 100px;
+    height: auto;
+}
+
+.site-title {
+    margin-top: 1rem;
+    font-size: 2.4rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #ffffff;
+}
+
+/* Navigation */
+.navbar {
+    background-color: #14213d;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
+
+.nav-list li a {
+    color: #56c0e0;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease-in-out;
+}
+
+.nav-list li a:hover {
+    color: #ffffff;
+}
+
+/* Sections */
+.section {
+    margin-top: 3rem;
+}
+
+.section h2 {
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    color: #56c0e0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 0.5rem;
+}
+
+.shortcut-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.shortcut-list li {
+    background-color: #1d253b;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 6px;
+    padding: 0.7rem 1rem;
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: flex-start;
+}
+
+.shortcut-list li:nth-child(even) {
+    background-color: #16203a;
+}
+
+.shortcut {
+    font-family: monospace;
+    background-color: #56c0e0;
+    color: #0a0f1d;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    margin-right: 0.75rem;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+/* Footer */
+.footer {
+    background-color: #0a0f1d;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem 0;
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.footer p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .site-title {
+        font-size: 1.8rem;
+    }
+    .nav-list {
+        gap: 1rem;
+    }
+    .section h2 {
+        font-size: 1.6rem;
+    }
+}
