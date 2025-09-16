@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sincero Finance – Atajos de Excel</title>
+    <title>Sincero Finance – Recursos para Excel</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="logo.png">
 </head>
@@ -13,29 +13,36 @@
     <header class="header">
         <div class="container header-content">
             <img src="logo.png" alt="Sincero Finance logo" class="logo">
-            <h1 class="site-title">Atajos de Excel</h1>
+            <h1 class="site-title">Recursos para Excel</h1>
         </div>
     </header>
 
     <!-- Navigation bar for quick access to each category -->
     <nav class="navbar">
         <ul class="nav-list container">
-            <li><a href="#funciones">Funciones</a></li>
-            <li><a href="#teclas-unicas">Una tecla</a></li>
-            <li><a href="#ctrl-funcion">Ctrl + Función</a></li>
-            <li><a href="#alt-funcion">Alt + Función</a></li>
-            <li><a href="#shift-funcion">Shift + Función</a></li>
-            <li><a href="#ctrl-shift">Ctrl + Shift</a></li>
-            <li><a href="#formulas">Fórmulas & Datos</a></li>
-            <li><a href="#seleccion">Selección</a></li>
-            <li><a href="#comunes">Atajos comunes</a></li>
+            <li><a class="atajo-link" href="#funciones">Funciones</a></li>
+            <li><a class="atajo-link" href="#teclas-unicas">Una tecla</a></li>
+            <li><a class="atajo-link" href="#ctrl-funcion">Ctrl + Función</a></li>
+            <li><a class="atajo-link" href="#alt-funcion">Alt + Función</a></li>
+            <li><a class="atajo-link" href="#shift-funcion">Shift + Función</a></li>
+            <li><a class="atajo-link" href="#ctrl-shift">Ctrl + Shift</a></li>
+            <li><a class="atajo-link" href="#formulas-atajos">Fórmulas &amp; Datos</a></li>
+            <li><a class="atajo-link" href="#seleccion">Selección</a></li>
+            <li><a class="atajo-link" href="#comunes">Atajos comunes</a></li>
+            <!-- Distinct link for the formulas section -->
+            <li class="formula-link"><a id="formulas-link" href="#excel-formulas">Fórmulas</a></li>
         </ul>
     </nav>
+
+    <!-- Search bar to filter shortcuts -->
+    <div class="search-container container">
+        <input type="text" id="searchBar" placeholder="Buscar atajo...">
+    </div>
 
     <!-- Main content with all shortcut lists -->
     <main class="container content">
         <!-- Function keys section -->
-        <section id="funciones" class="section">
+        <section id="funciones" class="section atajo-section">
             <h2>Funciones (F1–F12)</h2>
             <ul class="shortcut-list">
                 <li><span class="shortcut">F1</span> – Muestra la ayuda de Excel</li>
@@ -54,7 +61,7 @@
         </section>
 
         <!-- Single key shortcuts section -->
-        <section id="teclas-unicas" class="section">
+        <section id="teclas-unicas" class="section atajo-section">
             <h2>Atajos de una sola tecla</h2>
             <ul class="shortcut-list">
                 <li><span class="shortcut">AvPág</span> – Desplazarse una pantalla hacia abajo dentro de la hoja</li>
@@ -73,7 +80,7 @@
         </section>
 
         <!-- Ctrl + function keys section -->
-        <section id="ctrl-funcion" class="section">
+        <section id="ctrl-funcion" class="section atajo-section">
             <h2>Ctrl + tecla de función</h2>
             <ul class="shortcut-list">
                 <li><span class="shortcut">Ctrl + F1</span> – Oculta o muestra la cinta de opciones</li>
@@ -92,7 +99,7 @@
         </section>
 
         <!-- Alt + function keys section -->
-        <section id="alt-funcion" class="section">
+        <section id="alt-funcion" class="section atajo-section">
             <h2>Alt + tecla de función</h2>
             <ul class="shortcut-list">
                 <li><span class="shortcut">Alt + F1</span> – Crea un gráfico incrustado con los datos del rango actual</li>
@@ -105,7 +112,7 @@
         </section>
 
         <!-- Shift + function keys section -->
-        <section id="shift-funcion" class="section">
+        <section id="shift-funcion" class="section atajo-section">
             <h2>Shift (Mayús) + tecla de función</h2>
             <ul class="shortcut-list">
                 <li><span class="shortcut">Mayús + F2</span> – Añade un comentario en la celda</li>
@@ -123,7 +130,7 @@
         </section>
 
         <!-- Ctrl + Shift + keys section -->
-        <section id="ctrl-shift" class="section">
+        <section id="ctrl-shift" class="section atajo-section">
             <h2>Ctrl + Shift + ...</h2>
             <ul class="shortcut-list">
                 <li><span class="shortcut">Ctrl + Mayús + F3</span> – Abre el cuadro de diálogo «Crear nombres a partir de selección»</li>
@@ -144,8 +151,8 @@
             </ul>
         </section>
 
-        <!-- Formulas and data section -->
-        <section id="formulas" class="section">
+        <!-- Formulas and data shortcuts section -->
+        <section id="formulas-atajos" class="section atajo-section">
             <h2>Atajos para fórmulas y datos</h2>
             <ul class="shortcut-list">
                 <li><span class="shortcut">Alt + =</span> – Inserta autosuma</li>
@@ -166,7 +173,7 @@
         </section>
 
         <!-- Selection section -->
-        <section id="seleccion" class="section">
+        <section id="seleccion" class="section atajo-section">
             <h2>Atajos para seleccionar datos</h2>
             <ul class="shortcut-list">
                 <li><span class="shortcut">Mayús + Espacio</span> – Selecciona la fila actual</li>
@@ -183,7 +190,7 @@
         </section>
 
         <!-- Common shortcuts section -->
-        <section id="comunes" class="section">
+        <section id="comunes" class="section atajo-section">
             <h2>Atajos de teclado comunes</h2>
             <ul class="shortcut-list">
                 <li><span class="shortcut">Ctrl + C</span> – Copiar el contenido de las celdas seleccionadas</li>
@@ -196,7 +203,29 @@
                 <li><span class="shortcut">Ctrl + Flecha</span> – Moverse rápidamente entre celdas en la dirección de la flecha</li>
             </ul>
         </section>
+
+        <!-- New section for Excel formulas -->
+        <section id="excel-formulas" class="section formulas-section hidden">
+            <h2>Fórmulas de Excel</h2>
+            <ul class="shortcut-list">
+                <li><span class="shortcut">SUMA</span> – La función SUMA suma valores individuales, referencias o rangos de celdas.</li>
+                <li><span class="shortcut">SI</span> – La función SI permite realizar comparaciones lógicas y devolver un valor si una condición es verdadera y otro valor si es falsa.</li>
+                <li><span class="shortcut">Y</span> – La función Y devuelve VERDADERO si todas las condiciones se cumplen; de lo contrario devuelve FALSO.</li>
+                <li><span class="shortcut">O</span> – La función O devuelve VERDADERO si alguna condición es verdadera y FALSO si todas son falsas.</li>
+                <li><span class="shortcut">SI.ERROR</span> – La función SI.ERROR devuelve un valor específico si una fórmula se evalúa como un error; en caso contrario devuelve el resultado de la fórmula.</li>
+                <li><span class="shortcut">CONTARA</span> – La función CONTARA cuenta todos los valores de un conjunto de datos, incluidos los valores de texto y las repeticiones.</li>
+                <li><span class="shortcut">DIAS</span> – La función DIAS devuelve el número de días entre dos fechas.</li>
+                <li><span class="shortcut">AHORA</span> – La función AHORA devuelve el número de serie de la fecha y la hora actuales y se actualiza cada vez que se abre la hoja.</li>
+                <li><span class="shortcut">DIASEM</span> – La función DIASEM devuelve el día de la semana como un número entre 1 (domingo) y 7 (sábado).</li>
+            </ul>
+        </section>
     </main>
+
+    <!-- Back to top button -->
+    <button id="backToTop" class="back-to-top" aria-label="Volver arriba">↑</button>
+
+    <!-- JavaScript for search, navigation highlighting and back-to-top functionality -->
+    <script src="script.js"></script>
 
     <!-- Footer -->
     <footer class="footer">
