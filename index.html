@@ -2,232 +2,285 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sincero Finance – Recursos para Excel</title>
+    <!-- Import the Poppins typeface -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="logo.png">
 </head>
 <body>
-    <!-- Header with logo and title -->
-    <header class="header">
-        <div class="container header-content">
-            <img src="logo.png" alt="Sincero Finance logo" class="logo">
+    <!-- Branding header -->
+    <header class="header container">
+        <img src="logo.png" alt="Logo de Sincero Finance" class="logo" />
+        <div class="brand">
             <h1 class="site-title">Recursos para Excel</h1>
+            <div class="brand-sub">Sincero Finance</div>
         </div>
     </header>
 
-    <!-- Navigation bar for quick access to each category -->
-    <nav class="navbar">
-        <ul class="nav-list container">
-            <li><a class="atajo-link" href="#funciones">Funciones</a></li>
-            <li><a class="atajo-link" href="#teclas-unicas">Una tecla</a></li>
-            <li><a class="atajo-link" href="#ctrl-funcion">Ctrl + Función</a></li>
-            <li><a class="atajo-link" href="#alt-funcion">Alt + Función</a></li>
-            <li><a class="atajo-link" href="#shift-funcion">Shift + Función</a></li>
-            <li><a class="atajo-link" href="#ctrl-shift">Ctrl + Shift</a></li>
-            <li><a class="atajo-link" href="#formulas-atajos">Fórmulas &amp; Datos</a></li>
-            <li><a class="atajo-link" href="#seleccion">Selección</a></li>
-            <li><a class="atajo-link" href="#comunes">Atajos comunes</a></li>
-            <!-- Distinct link for the formulas section -->
-            <li class="formula-link"><a id="formulas-link" href="#excel-formulas">Fórmulas</a></li>
-        </ul>
+    <!-- Top level tabs for navigating between shortcuts and formulas -->
+    <nav class="tabs">
+        <button class="tab active" data-tab="atajos">Atajos</button>
+        <button class="tab" data-tab="formulas">Fórmulas</button>
+        <div class="tabs-underline"></div>
     </nav>
 
-    <!-- Search bar to filter shortcuts -->
-    <div class="search-container container">
-        <input type="text" id="searchBar" placeholder="Buscar atajo...">
-    </div>
+    <main class="container">
+        <!-- Search bar; placeholder updates based on active view -->
+        <div class="search-wrap">
+            <input id="searchBar" type="search" placeholder="Buscar atajo…" />
+        </div>
 
-    <!-- Main content with all shortcut lists -->
-    <main class="container content">
-        <!-- Function keys section -->
-        <section id="funciones" class="section atajo-section">
-            <h2>Funciones (F1–F12)</h2>
-            <ul class="shortcut-list">
-                <li><span class="shortcut">F1</span> – Muestra la ayuda de Excel</li>
-                <li><span class="shortcut">F2</span> – Entra en modo de edición para la celda activa</li>
-                <li><span class="shortcut">F3</span> – Muestra el cuadro de diálogo «Pegar nombre» si existe un nombre definido</li>
-                <li><span class="shortcut">F4</span> – Repite la última acción</li>
-                <li><span class="shortcut">F5</span> – Abre el cuadro de diálogo «Ir a»</li>
-                <li><span class="shortcut">F6</span> – Mueve el foco entre los paneles de un libro dividido</li>
-                <li><span class="shortcut">F7</span> – Inicia la revisión ortográfica</li>
-                <li><span class="shortcut">F8</span> – Activa el modo Ampliar selección</li>
-                <li><span class="shortcut">F9</span> – Recalcula las fórmulas en los libros abiertos</li>
-                <li><span class="shortcut">F10</span> – Activa la barra de menús</li>
-                <li><span class="shortcut">F11</span> – Crea una hoja de gráfico con el rango de celdas seleccionado</li>
-                <li><span class="shortcut">F12</span> – Abre el cuadro de diálogo «Guardar como»</li>
-            </ul>
+        <!-- View for all keyboard shortcuts (atajos) -->
+        <section id="view-atajos" class="view view--active">
+            <!-- Function keys section -->
+            <section id="funciones" class="section">
+                <h2>Funciones (F1–F12)</h2>
+                <ul class="shortcut-list">
+                    <li><span class="shortcut">F1</span> – Muestra la ayuda de Excel</li>
+                    <li><span class="shortcut">F2</span> – Entra en modo de edición para la celda activa</li>
+                    <li><span class="shortcut">F3</span> – Muestra el cuadro de diálogo «Pegar nombre» si existe un nombre definido</li>
+                    <li><span class="shortcut">F4</span> – Repite la última acción</li>
+                    <li><span class="shortcut">F5</span> – Abre el cuadro de diálogo «Ir a»</li>
+                    <li><span class="shortcut">F6</span> – Mueve el foco entre los paneles de un libro dividido</li>
+                    <li><span class="shortcut">F7</span> – Inicia la revisión ortográfica</li>
+                    <li><span class="shortcut">F8</span> – Activa el modo Ampliar selección</li>
+                    <li><span class="shortcut">F9</span> – Recalcula las fórmulas en los libros abiertos</li>
+                    <li><span class="shortcut">F10</span> – Activa la barra de menús</li>
+                    <li><span class="shortcut">F11</span> – Crea una hoja de gráfico con el rango de celdas seleccionado</li>
+                    <li><span class="shortcut">F12</span> – Abre el cuadro de diálogo «Guardar como»</li>
+                </ul>
+            </section>
+
+            <!-- Single key shortcuts section -->
+            <section id="teclas-unicas" class="section">
+                <h2>Atajos de una sola tecla</h2>
+                <ul class="shortcut-list">
+                    <li><span class="shortcut">AvPág</span> – Desplazarse una pantalla hacia abajo dentro de la hoja</li>
+                    <li><span class="shortcut">RePág</span> – Desplazarse una pantalla hacia arriba dentro de la hoja</li>
+                    <li><span class="shortcut">Alt</span> – Activa la barra de menús</li>
+                    <li><span class="shortcut">Enter</span> – Acepta la entrada de una celda y selecciona la celda inferior</li>
+                    <li><span class="shortcut">Esc</span> – Cancela cuadros de diálogo y la entrada de una celda</li>
+                    <li><span class="shortcut">Barra espaciadora</span> – Activa o desactiva las casillas de verificación en cuadros de diálogo</li>
+                    <li><span class="shortcut">Fin</span> – Activa o desactiva el «Modo final»</li>
+                    <li><span class="shortcut">Inicio</span> – Moverse al principio de la fila de la celda activa</li>
+                    <li><span class="shortcut">Retroceso</span> – Borra el contenido de una celda y entra en el modo de edición</li>
+                    <li><span class="shortcut">Suprimir</span> – Borra el contenido de una celda</li>
+                    <li><span class="shortcut">Tabulador</span> – Completa la entrada de una celda y selecciona la celda a la derecha</li>
+                    <li><span class="shortcut">Flechas</span> – Moverse a las celdas de arriba, abajo, izquierda o derecha</li>
+                </ul>
+            </section>
+
+            <!-- Ctrl + function keys section -->
+            <section id="ctrl-funcion" class="section">
+                <h2>Ctrl + tecla de función</h2>
+                <ul class="shortcut-list">
+                    <li><span class="shortcut">Ctrl + F1</span> – Oculta o muestra la cinta de opciones</li>
+                    <li><span class="shortcut">Ctrl + F2</span> – Muestra el cuadro de diálogo Imprimir</li>
+                    <li><span class="shortcut">Ctrl + F3</span> – Muestra el Administrador de nombres</li>
+                    <li><span class="shortcut">Ctrl + F4</span> – Cierra la ventana del libro actual</li>
+                    <li><span class="shortcut">Ctrl + F5</span> – Restaura el tamaño de la ventana del libro actual</li>
+                    <li><span class="shortcut">Ctrl + F6</span> – Moverse al siguiente libro abierto</li>
+                    <li><span class="shortcut">Ctrl + F7</span> – Permite mover la ventana del libro cuando la ventana no está maximizada</li>
+                    <li><span class="shortcut">Ctrl + F8</span> – Permite cambiar el tamaño de la ventana del libro cuando la ventana no está maximizada</li>
+                    <li><span class="shortcut">Ctrl + F9</span> – Minimiza la ventana del libro actual</li>
+                    <li><span class="shortcut">Ctrl + F10</span> – Maximiza la ventana de un libro minimizado</li>
+                    <li><span class="shortcut">Ctrl + F11</span> – Crea una hoja de macros</li>
+                    <li><span class="shortcut">Ctrl + F12</span> – Muestra el cuadro de diálogo Abrir</li>
+                </ul>
+            </section>
+
+            <!-- Alt + function keys section -->
+            <section id="alt-funcion" class="section">
+                <h2>Alt + tecla de función</h2>
+                <ul class="shortcut-list">
+                    <li><span class="shortcut">Alt + F1</span> – Crea un gráfico incrustado con los datos del rango actual</li>
+                    <li><span class="shortcut">Alt + F2</span> – Abre el cuadro de diálogo «Guardar como»</li>
+                    <li><span class="shortcut">Alt + F4</span> – Cierra Excel</li>
+                    <li><span class="shortcut">Alt + F8</span> – Muestra el cuadro de diálogo «Macro»</li>
+                    <li><span class="shortcut">Alt + F10</span> – Abre el panel «Selección y visibilidad»</li>
+                    <li><span class="shortcut">Alt + F11</span> – Abre el editor de Visual Basic para Aplicaciones</li>
+                </ul>
+            </section>
+
+            <!-- Shift + function keys section -->
+            <section id="shift-funcion" class="section">
+                <h2>Shift (Mayús) + tecla de función</h2>
+                <ul class="shortcut-list">
+                    <li><span class="shortcut">Mayús + F2</span> – Añade un comentario en la celda</li>
+                    <li><span class="shortcut">Mayús + F3</span> – Abre el cuadro de diálogo «Insertar función» (al editar fórmulas muestra «Argumentos de función»)</li>
+                    <li><span class="shortcut">Mayús + F4</span> – Repite la operación «Buscar siguiente» en una búsqueda</li>
+                    <li><span class="shortcut">Mayús + F5</span> – Abre el cuadro de diálogo «Buscar»</li>
+                    <li><span class="shortcut">Mayús + F6</span> – Cambia entre la hoja, la cinta de opciones, la barra de estado y el panel de tareas</li>
+                    <li><span class="shortcut">Mayús + F7</span> – Abre el panel de tareas «Referencia»</li>
+                    <li><span class="shortcut">Mayús + F8</span> – Agrega un rango de celdas a la selección con las teclas de dirección</li>
+                    <li><span class="shortcut">Mayús + F9</span> – Calcula todas las fórmulas de la hoja activa</li>
+                    <li><span class="shortcut">Mayús + F10</span> – Muestra el menú contextual de un elemento seleccionado</li>
+                    <li><span class="shortcut">Mayús + F11</span> – Inserta una nueva hoja de cálculo</li>
+                    <li><span class="shortcut">Mayús + F12</span> – Abre el cuadro de diálogo «Guardar cómo»</li>
+                </ul>
+            </section>
+
+            <!-- Ctrl + Shift shortcuts section -->
+            <section id="ctrl-shift" class="section">
+                <h2>Ctrl + Shift + …</h2>
+                <ul class="shortcut-list">
+                    <li><span class="shortcut">Ctrl + Mayús + F3</span> – Abre el cuadro de diálogo «Crear nombres a partir de selección»</li>
+                    <li><span class="shortcut">Ctrl + Mayús + F6</span> – Cambia al libro anterior abierto</li>
+                    <li><span class="shortcut">Ctrl + Mayús + F10</span> – Activa la barra de menús</li>
+                    <li><span class="shortcut">Ctrl + Mayús + F12</span> – Abre el cuadro de diálogo «Imprimir»</li>
+                    <li><span class="shortcut">Ctrl + Mayús + F</span> – Abre el menú «Formato de celdas» en la pestaña Fuentes</li>
+                    <li><span class="shortcut">Ctrl + Mayús + L</span> – Activa o desactiva los filtros en un rango</li>
+                    <li><span class="shortcut">Ctrl + Mayús + O</span> – Selecciona todas las celdas con comentarios</li>
+                    <li><span class="shortcut">Ctrl + Mayús + U</span> – Amplía la barra de fórmulas</li>
+                    <li><span class="shortcut">Ctrl + Mayús + Entrar</span> – Ingresa una fórmula como fórmula matricial</li>
+                    <li><span class="shortcut">Ctrl + Mayús + Inicio</span> – Extiende la selección hasta el comienzo de la hoja</li>
+                    <li><span class="shortcut">Ctrl + Mayús + Fin</span> – Extiende la selección hasta la última celda utilizada</li>
+                    <li><span class="shortcut">Ctrl + Mayús + AvPág</span> – Selecciona la hoja actual y la siguiente de un libro</li>
+                    <li><span class="shortcut">Ctrl + Mayús + RePág</span> – Selecciona la hoja actual y la anterior de un libro</li>
+                    <li><span class="shortcut">Ctrl + Mayús + Dirección</span> – Extiende la selección a la última celda no vacía de la columna o fila actual</li>
+                    <li><span class="shortcut">Ctrl + Mayús + Espacio</span> – Selecciona toda la hoja de cálculo</li>
+                </ul>
+            </section>
+
+            <!-- Shortcuts for formulas and data -->
+            <section id="formulas-atajos" class="section">
+                <h2>Atajos para fórmulas y datos</h2>
+                <ul class="shortcut-list">
+                    <li><span class="shortcut">Alt + =</span> – Inserta autosuma</li>
+                    <li><span class="shortcut">Alt + Abajo</span> – Abre una lista de validación de datos</li>
+                    <li><span class="shortcut">Alt + Enter</span> – Inserta un salto de línea dentro de una celda</li>
+                    <li><span class="shortcut">Ctrl + ,</span> – Inserta la fecha actual</li>
+                    <li><span class="shortcut">Ctrl + :</span> – Inserta la hora actual</li>
+                    <li><span class="shortcut">Ctrl + "</span> – Copia el valor de la celda de arriba</li>
+                    <li><span class="shortcut">Ctrl + ’</span> – Copia la fórmula de la celda de arriba</li>
+                    <li><span class="shortcut">Ctrl + Enter</span> – Rellena el rango seleccionado con la entrada actual</li>
+                    <li><span class="shortcut">Ctrl + Suprimir</span> – Borra el texto hasta el final de la línea</li>
+                    <li><span class="shortcut">Ctrl + Alt + K</span> – Inserta un hipervínculo</li>
+                    <li><span class="shortcut">Mayús + Enter</span> – Completa la entrada de la celda y va a la celda superior</li>
+                    <li><span class="shortcut">Enter</span> – Completa la entrada de la celda y va a la celda inferior</li>
+                    <li><span class="shortcut">Mayús + Tabulador</span> – Completa la entrada de la celda y va a la celda de la izquierda</li>
+                    <li><span class="shortcut">Tabulador</span> – Completa la entrada de la celda y va a la celda de la derecha</li>
+                </ul>
+            </section>
+
+            <!-- Shortcuts for selection -->
+            <section id="seleccion" class="section">
+                <h2>Atajos para seleccionar datos</h2>
+                <ul class="shortcut-list">
+                    <li><span class="shortcut">Mayús + Espacio</span> – Selecciona la fila actual</li>
+                    <li><span class="shortcut">Ctrl + Espacio</span> – Selecciona la columna actual</li>
+                    <li><span class="shortcut">Mayús + Inicio</span> – Extiende la selección hasta el inicio de la fila</li>
+                    <li><span class="shortcut">Mayús + AvPág</span> – Extiende la selección hacia abajo</li>
+                    <li><span class="shortcut">Mayús + RePág</span> – Extiende la selección hacia arriba</li>
+                    <li><span class="shortcut">Mayús + Dirección</span> – Extiende la selección una celda hacia arriba, abajo, izquierda o derecha</li>
+                    <li><span class="shortcut">Ctrl + Mayús + Dirección</span> – Extiende la selección a la última celda no vacía de la columna o fila actual</li>
+                    <li><span class="shortcut">Ctrl + Mayús + Inicio</span> – Extiende la selección hasta la primera celda usada de la hoja</li>
+                    <li><span class="shortcut">Ctrl + Mayús + Fin</span> – Extiende la selección hasta la última celda utilizada de la hoja</li>
+                    <li><span class="shortcut">Ctrl + Mayús + *</span> – Selecciona el área actual alrededor de la celda activa</li>
+                </ul>
+            </section>
+
+            <!-- Common shortcuts section -->
+            <section id="comunes" class="section">
+                <h2>Atajos de teclado comunes</h2>
+                <ul class="shortcut-list">
+                    <li><span class="shortcut">Ctrl + C</span> – Copiar el contenido de las celdas seleccionadas</li>
+                    <li><span class="shortcut">Ctrl + V</span> – Pegar el contenido del portapapeles</li>
+                    <li><span class="shortcut">Ctrl + X</span> – Cortar las celdas seleccionadas</li>
+                    <li><span class="shortcut">Ctrl + Z</span> – Deshacer la última acción</li>
+                    <li><span class="shortcut">Ctrl + Y</span> – Rehacer la última acción deshecha</li>
+                    <li><span class="shortcut">Ctrl + S</span> – Guardar el libro actual</li>
+                    <li><span class="shortcut">Ctrl + F</span> – Buscar y reemplazar</li>
+                    <li><span class="shortcut">Ctrl + Flecha</span> – Moverse rápidamente entre celdas en la dirección de la flecha</li>
+                </ul>
+            </section>
         </section>
 
-        <!-- Single key shortcuts section -->
-        <section id="teclas-unicas" class="section atajo-section">
-            <h2>Atajos de una sola tecla</h2>
-            <ul class="shortcut-list">
-                <li><span class="shortcut">AvPág</span> – Desplazarse una pantalla hacia abajo dentro de la hoja</li>
-                <li><span class="shortcut">RePág</span> – Desplazarse una pantalla hacia arriba dentro de la hoja</li>
-                <li><span class="shortcut">Alt</span> – Activa la barra de menús</li>
-                <li><span class="shortcut">Enter</span> – Acepta la entrada de una celda y selecciona la celda inferior</li>
-                <li><span class="shortcut">Esc</span> – Cancela cuadros de diálogo y la entrada de una celda</li>
-                <li><span class="shortcut">Barra espaciadora</span> – Activa o desactiva las casillas de verificación en cuadros de diálogo</li>
-                <li><span class="shortcut">Fin</span> – Activa o desactiva el «Modo final»</li>
-                <li><span class="shortcut">Inicio</span> – Moverse al principio de la fila de la celda activa</li>
-                <li><span class="shortcut">Retroceso</span> – Borra el contenido de una celda y entra en el modo de edición</li>
-                <li><span class="shortcut">Suprimir</span> – Borra el contenido de una celda</li>
-                <li><span class="shortcut">Tabulador</span> – Completa la entrada de una celda y selecciona la celda a la derecha</li>
-                <li><span class="shortcut">Flechas</span> – Moverse a las celdas de arriba, abajo, izquierda o derecha</li>
-            </ul>
-        </section>
+        <!-- View for Excel formulas -->
+        <section id="view-formulas" class="view">
+            <h2 class="h2">Fórmulas</h2>
+            <!-- Table of contents for formula categories -->
+            <nav class="toc">
+                <a href="#f-logico">Lógicas y manejo de errores</a>
+                <a href="#f-texto">Texto</a>
+                <a href="#f-busqueda">Búsqueda y referencia</a>
+                <a href="#f-matematicas">Matemáticas / Estadística</a>
+                <a href="#f-fecha">Fecha y hora</a>
+            </nav>
 
-        <!-- Ctrl + function keys section -->
-        <section id="ctrl-funcion" class="section atajo-section">
-            <h2>Ctrl + tecla de función</h2>
-            <ul class="shortcut-list">
-                <li><span class="shortcut">Ctrl + F1</span> – Oculta o muestra la cinta de opciones</li>
-                <li><span class="shortcut">Ctrl + F2</span> – Muestra el cuadro de diálogo Imprimir</li>
-                <li><span class="shortcut">Ctrl + F3</span> – Muestra el Administrador de nombres</li>
-                <li><span class="shortcut">Ctrl + F4</span> – Cierra la ventana del libro actual</li>
-                <li><span class="shortcut">Ctrl + F5</span> – Restaura el tamaño de la ventana del libro actual</li>
-                <li><span class="shortcut">Ctrl + F6</span> – Moverse al siguiente libro abierto</li>
-                <li><span class="shortcut">Ctrl + F7</span> – Permite mover la ventana del libro cuando la ventana no está maximizada</li>
-                <li><span class="shortcut">Ctrl + F8</span> – Permite cambiar el tamaño de la ventana del libro cuando la ventana no está maximizada</li>
-                <li><span class="shortcut">Ctrl + F9</span> – Minimiza la ventana del libro actual</li>
-                <li><span class="shortcut">Ctrl + F10</span> – Maximiza la ventana de un libro minimizado</li>
-                <li><span class="shortcut">Ctrl + F11</span> – Crea una hoja de macros</li>
-                <li><span class="shortcut">Ctrl + F12</span> – Muestra el cuadro de diálogo Abrir</li>
-            </ul>
-        </section>
+            <!-- Lógicas y manejo de errores -->
+            <section id="f-logico" class="formula-group">
+                <h3>Lógicas y manejo de errores</h3>
+                <ul class="formula-list">
+                    <li><b>SI</b> — Evalúa una condición y devuelve un valor si es verdadera y otro si es falsa. <i>Patrón:</i> <code>SI(condición, valor_si_verdadero, valor_si_falso)</code></li>
+                    <li><b>Y</b> — Devuelve VERDADERO si todas las condiciones son verdaderas. <i>Patrón:</i> <code>Y(cond1, cond2,…)</code></li>
+                    <li><b>O</b> — Devuelve VERDADERO si alguna condición es verdadera. <i>Patrón:</i> <code>O(cond1, cond2,…)</code></li>
+                    <li><b>SI.ERROR</b> — Devuelve un valor alternativo cuando una expresión genera un error. <i>Patrón:</i> <code>SI.ERROR(expr, valor_si_error)</code></li>
+                </ul>
+            </section>
 
-        <!-- Alt + function keys section -->
-        <section id="alt-funcion" class="section atajo-section">
-            <h2>Alt + tecla de función</h2>
-            <ul class="shortcut-list">
-                <li><span class="shortcut">Alt + F1</span> – Crea un gráfico incrustado con los datos del rango actual</li>
-                <li><span class="shortcut">Alt + F2</span> – Abre el cuadro de diálogo «Guardar como»</li>
-                <li><span class="shortcut">Alt + F4</span> – Cierra Excel</li>
-                <li><span class="shortcut">Alt + F8</span> – Muestra el cuadro de diálogo «Macro»</li>
-                <li><span class="shortcut">Alt + F10</span> – Abre el panel «Selección y visibilidad»</li>
-                <li><span class="shortcut">Alt + F11</span> – Abre el editor de Visual Basic para Aplicaciones</li>
-            </ul>
-        </section>
+            <!-- Formulas de texto -->
+            <section id="f-texto" class="formula-group">
+                <h3>Texto</h3>
+                <ul class="formula-list">
+                    <li><b>TEXTO</b> — Da formato a un número como texto. <i>Patrón:</i> <code>TEXTO(valor, "formato")</code></li>
+                    <li><b>CONCAT</b> / <b>CONCATENAR</b> — Une textos de varias celdas en una sola. <i>Patrón:</i> <code>CONCAT(texto1, texto2,…)</code></li>
+                    <li><b>IZQUIERDA</b> — Extrae N caracteres desde la izquierda de un texto. <i>Patrón:</i> <code>IZQUIERDA(texto, n)</code></li>
+                    <li><b>DERECHA</b> — Extrae N caracteres desde la derecha de un texto. <i>Patrón:</i> <code>DERECHA(texto, n)</code></li>
+                    <li><b>LARGO</b> — Devuelve la longitud de una cadena de texto. <i>Patrón:</i> <code>LARGO(texto)</code></li>
+                    <li><b>HALLAR</b> — Devuelve la posición inicial de un texto dentro de otro texto. <i>Patrón:</i> <code>HALLAR(texto_buscado, dentro_del_texto, [inicio])</code></li>
+                    <li><b>SUSTITUIR</b> — Sustituye texto específico por texto nuevo en una cadena. <i>Patrón:</i> <code>SUSTITUIR(texto, texto_original, texto_nuevo, [núm_de_ocurrencia])</code></li>
+                </ul>
+            </section>
 
-        <!-- Shift + function keys section -->
-        <section id="shift-funcion" class="section atajo-section">
-            <h2>Shift (Mayús) + tecla de función</h2>
-            <ul class="shortcut-list">
-                <li><span class="shortcut">Mayús + F2</span> – Añade un comentario en la celda</li>
-                <li><span class="shortcut">Mayús + F3</span> – Abre el cuadro de diálogo «Insertar función» (al editar fórmulas muestra «Argumentos de función»)</li>
-                <li><span class="shortcut">Mayús + F4</span> – Repite la operación «Buscar siguiente» en una búsqueda</li>
-                <li><span class="shortcut">Mayús + F5</span> – Abre el cuadro de diálogo «Buscar»</li>
-                <li><span class="shortcut">Mayús + F6</span> – Cambia entre la hoja, la cinta de opciones, la barra de estado y el panel de tareas</li>
-                <li><span class="shortcut">Mayús + F7</span> – Abre el panel de tareas «Referencia»</li>
-                <li><span class="shortcut">Mayús + F8</span> – Agrega un rango de celdas a la selección con las teclas de dirección</li>
-                <li><span class="shortcut">Mayús + F9</span> – Calcula todas las fórmulas de la hoja activa</li>
-                <li><span class="shortcut">Mayús + F10</span> – Muestra el menú contextual de un elemento seleccionado</li>
-                <li><span class="shortcut">Mayús + F11</span> – Inserta una nueva hoja de cálculo</li>
-                <li><span class="shortcut">Mayús + F12</span> – Abre el cuadro de diálogo «Guardar cómo»</li>
-            </ul>
-        </section>
+            <!-- Formulas de búsqueda y referencia -->
+            <section id="f-busqueda" class="formula-group">
+                <h3>Búsqueda y referencia</h3>
+                <ul class="formula-list">
+                    <li><b>BUSCARV</b> — Busca un valor en la primera columna de una tabla y devuelve un valor de la misma fila. <i>Patrón:</i> <code>BUSCARV(valor, tabla, col, [aprox])</code></li>
+                    <li><b>BUSCARX</b> — Realiza una búsqueda flexible en filas o columnas. <i>Patrón:</i> <code>BUSCARX(valor, buscar_en, devolver_desde, [si_no], [modo])</code></li>
+                    <li><b>INDICE</b> — Devuelve el valor de una celda en un rango según la fila y la columna especificadas. <i>Patrón:</i> <code>INDICE(rango, fila, [col])</code></li>
+                    <li><b>COINCIDIR</b> — Devuelve la posición de un valor dentro de un rango. <i>Patrón:</i> <code>COINCIDIR(valor, rango, [tipo])</code></li>
+                </ul>
+            </section>
 
-        <!-- Ctrl + Shift + keys section -->
-        <section id="ctrl-shift" class="section atajo-section">
-            <h2>Ctrl + Shift + ...</h2>
-            <ul class="shortcut-list">
-                <li><span class="shortcut">Ctrl + Mayús + F3</span> – Abre el cuadro de diálogo «Crear nombres a partir de selección»</li>
-                <li><span class="shortcut">Ctrl + Mayús + F6</span> – Cambia al libro anterior abierto</li>
-                <li><span class="shortcut">Ctrl + Mayús + F10</span> – Activa la barra de menús</li>
-                <li><span class="shortcut">Ctrl + Mayús + F12</span> – Abre el cuadro de diálogo «Imprimir»</li>
-                <li><span class="shortcut">Ctrl + Mayús + F</span> – Abre el menú «Formato de celdas» en la pestaña Fuentes</li>
-                <li><span class="shortcut">Ctrl + Mayús + L</span> – Activa o desactiva los filtros en un rango</li>
-                <li><span class="shortcut">Ctrl + Mayús + O</span> – Selecciona todas las celdas con comentarios</li>
-                <li><span class="shortcut">Ctrl + Mayús + U</span> – Amplía la barra de fórmulas</li>
-                <li><span class="shortcut">Ctrl + Mayús + Entrar</span> – Ingresa una fórmula como fórmula matricial</li>
-                <li><span class="shortcut">Ctrl + Mayús + Inicio</span> – Extiende la selección hasta el comienzo de la hoja</li>
-                <li><span class="shortcut">Ctrl + Mayús + Fin</span> – Extiende la selección hasta la última celda utilizada</li>
-                <li><span class="shortcut">Ctrl + Mayús + AvPág</span> – Selecciona la hoja actual y la siguiente de un libro</li>
-                <li><span class="shortcut">Ctrl + Mayús + RePág</span> – Selecciona la hoja actual y la anterior de un libro</li>
-                <li><span class="shortcut">Ctrl + Mayús + Dirección</span> – Extiende la selección a la última celda no vacía de la columna o fila actual</li>
-                <li><span class="shortcut">Ctrl + Mayús + Espacio</span> – Selecciona toda la hoja de cálculo</li>
-            </ul>
-        </section>
+            <!-- Formulas matemáticas y estadísticas -->
+            <section id="f-matematicas" class="formula-group">
+                <h3>Matemáticas / Estadística</h3>
+                <ul class="formula-list">
+                    <li><b>SUMA</b> — Suma valores individuales, referencias o rangos de celdas. <i>Patrón:</i> <code>SUMA(rango)</code></li>
+                    <li><b>PROMEDIO</b> — Devuelve la media aritmética de un rango de números. <i>Patrón:</i> <code>PROMEDIO(rango)</code></li>
+                    <li><b>MAX</b> — Devuelve el valor máximo de un conjunto de valores. <i>Patrón:</i> <code>MAX(número1, número2,…)</code></li>
+                    <li><b>MIN</b> — Devuelve el valor mínimo de un conjunto de valores. <i>Patrón:</i> <code>MIN(número1, número2,…)</code></li>
+                    <li><b>REDONDEAR</b> — Redondea un número a la cantidad de decimales especificada. <i>Patrón:</i> <code>REDONDEAR(número, decimales)</code></li>
+                    <li><b>CONTAR</b> — Cuenta las celdas que contienen números. <i>Patrón:</i> <code>CONTAR(rango)</code></li>
+                    <li><b>CONTARA</b> — Cuenta celdas no vacías en un rango. <i>Patrón:</i> <code>CONTARA(rango)</code></li>
+                </ul>
+            </section>
 
-        <!-- Formulas and data shortcuts section -->
-        <section id="formulas-atajos" class="section atajo-section">
-            <h2>Atajos para fórmulas y datos</h2>
-            <ul class="shortcut-list">
-                <li><span class="shortcut">Alt + =</span> – Inserta autosuma</li>
-                <li><span class="shortcut">Alt + Abajo</span> – Abre una lista de validación de datos</li>
-                <li><span class="shortcut">Alt + Enter</span> – Inserta un salto de línea dentro de una celda</li>
-                <li><span class="shortcut">Ctrl + ,</span> – Inserta la fecha actual</li>
-                <li><span class="shortcut">Ctrl + :</span> – Inserta la hora actual</li>
-                <li><span class="shortcut">Ctrl + "</span> – Copia el valor de la celda de arriba</li>
-                <li><span class="shortcut">Ctrl + ’</span> – Copia la fórmula de la celda de arriba</li>
-                <li><span class="shortcut">Ctrl + Enter</span> – Rellena el rango seleccionado con la entrada actual</li>
-                <li><span class="shortcut">Ctrl + Suprimir</span> – Borra el texto hasta el final de la línea</li>
-                <li><span class="shortcut">Ctrl + Alt + K</span> – Inserta un hipervínculo</li>
-                <li><span class="shortcut">Mayús + Enter</span> – Completa la entrada de la celda y va a la celda superior</li>
-                <li><span class="shortcut">Enter</span> – Completa la entrada de la celda y va a la celda inferior</li>
-                <li><span class="shortcut">Mayús + Tabulador</span> – Completa la entrada de la celda y va a la celda de la izquierda</li>
-                <li><span class="shortcut">Tabulador</span> – Completa la entrada de la celda y va a la celda de la derecha</li>
-            </ul>
-        </section>
-
-        <!-- Selection section -->
-        <section id="seleccion" class="section atajo-section">
-            <h2>Atajos para seleccionar datos</h2>
-            <ul class="shortcut-list">
-                <li><span class="shortcut">Mayús + Espacio</span> – Selecciona la fila actual</li>
-                <li><span class="shortcut">Ctrl + Espacio</span> – Selecciona la columna actual</li>
-                <li><span class="shortcut">Mayús + Inicio</span> – Extiende la selección hasta el inicio de la fila</li>
-                <li><span class="shortcut">Mayús + AvPág</span> – Extiende la selección hacia abajo</li>
-                <li><span class="shortcut">Mayús + RePág</span> – Extiende la selección hacia arriba</li>
-                <li><span class="shortcut">Mayús + Dirección</span> – Extiende la selección una celda hacia arriba, abajo, izquierda o derecha</li>
-                <li><span class="shortcut">Ctrl + Mayús + Dirección</span> – Extiende la selección a la última celda no vacía de la columna o fila actual</li>
-                <li><span class="shortcut">Ctrl + Mayús + Inicio</span> – Extiende la selección hasta la primera celda usada de la hoja</li>
-                <li><span class="shortcut">Ctrl + Mayús + Fin</span> – Extiende la selección hasta la última celda utilizada de la hoja</li>
-                <li><span class="shortcut">Ctrl + Mayús + *</span> – Selecciona el área actual alrededor de la celda activa</li>
-            </ul>
-        </section>
-
-        <!-- Common shortcuts section -->
-        <section id="comunes" class="section atajo-section">
-            <h2>Atajos de teclado comunes</h2>
-            <ul class="shortcut-list">
-                <li><span class="shortcut">Ctrl + C</span> – Copiar el contenido de las celdas seleccionadas</li>
-                <li><span class="shortcut">Ctrl + V</span> – Pegar el contenido del portapapeles</li>
-                <li><span class="shortcut">Ctrl + X</span> – Cortar las celdas seleccionadas</li>
-                <li><span class="shortcut">Ctrl + Z</span> – Deshacer la última acción</li>
-                <li><span class="shortcut">Ctrl + Y</span> – Rehacer la última acción deshecha</li>
-                <li><span class="shortcut">Ctrl + S</span> – Guardar el libro actual</li>
-                <li><span class="shortcut">Ctrl + F</span> – Buscar y reemplazar</li>
-                <li><span class="shortcut">Ctrl + Flecha</span> – Moverse rápidamente entre celdas en la dirección de la flecha</li>
-            </ul>
-        </section>
-
-        <!-- New section for Excel formulas -->
-        <section id="excel-formulas" class="section formulas-section hidden">
-            <h2>Fórmulas de Excel</h2>
-            <ul class="shortcut-list">
-                <li><span class="shortcut">SUMA</span> – La función SUMA suma valores individuales, referencias o rangos de celdas.</li>
-                <li><span class="shortcut">SI</span> – La función SI permite realizar comparaciones lógicas y devolver un valor si una condición es verdadera y otro valor si es falsa.</li>
-                <li><span class="shortcut">Y</span> – La función Y devuelve VERDADERO si todas las condiciones se cumplen; de lo contrario devuelve FALSO.</li>
-                <li><span class="shortcut">O</span> – La función O devuelve VERDADERO si alguna condición es verdadera y FALSO si todas son falsas.</li>
-                <li><span class="shortcut">SI.ERROR</span> – La función SI.ERROR devuelve un valor específico si una fórmula se evalúa como un error; en caso contrario devuelve el resultado de la fórmula.</li>
-                <li><span class="shortcut">CONTARA</span> – La función CONTARA cuenta todos los valores de un conjunto de datos, incluidos los valores de texto y las repeticiones.</li>
-                <li><span class="shortcut">DIAS</span> – La función DIAS devuelve el número de días entre dos fechas.</li>
-                <li><span class="shortcut">AHORA</span> – La función AHORA devuelve el número de serie de la fecha y la hora actuales y se actualiza cada vez que se abre la hoja.</li>
-                <li><span class="shortcut">DIASEM</span> – La función DIASEM devuelve el día de la semana como un número entre 1 (domingo) y 7 (sábado).</li>
-            </ul>
+            <!-- Formulas de fecha y hora -->
+            <section id="f-fecha" class="formula-group">
+                <h3>Fecha y hora</h3>
+                <ul class="formula-list">
+                    <li><b>HOY</b> — Devuelve la fecha actual. <i>Patrón:</i> <code>HOY()</code></li>
+                    <li><b>AHORA</b> — Devuelve la fecha y hora actual. <i>Patrón:</i> <code>AHORA()</code></li>
+                    <li><b>DIAS</b> — Devuelve el número de días entre dos fechas. <i>Patrón:</i> <code>DIAS(fecha_final, fecha_inicial)</code></li>
+                    <li><b>DIASEM</b> — Devuelve el día de la semana como un número entre 1 (domingo) y 7 (sábado). <i>Patrón:</i> <code>DIASEM(fecha, [tipo])</code></li>
+                    <li><b>DIA.LAB</b> — Calcula una fecha laboral desplazada, excluyendo fines de semana y festivos. <i>Patrón:</i> <code>DIA.LAB(inicio, días, [festivos])</code></li>
+                </ul>
+            </section>
         </section>
     </main>
 
-    <!-- Back to top button -->
+    <!-- Back to top floating button -->
     <button id="backToTop" class="back-to-top" aria-label="Volver arriba">↑</button>
 
-    <!-- JavaScript for search, navigation highlighting and back-to-top functionality -->
     <script src="script.js"></script>
-
-    <!-- Footer -->
+    <!-- Footer with copyright -->
     <footer class="footer">
         <div class="container">
             <p>© 2025 Sincero Finance. Todos los derechos reservados.</p>

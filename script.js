@@ -1,103 +1,84 @@
-document.addEventListener('DOMContentLoaded', function () {
-    // Search functionality
+//
+// Funciones de interacción para el sitio “Recursos para Excel” de Sincero Finance.
+// Este script controla el cambio de pestañas entre los atajos y las fórmulas,
+// actualiza la barra de búsqueda en función de la vista activa, filtra los
+// elementos de cada lista y gestiona el botón flotante para volver al inicio.
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Obtiene referencias a las pestañas y vistas
+    const tabs = document.querySelectorAll('.tab');
+    const views = {
+        atajos: document.getElementById('view-atajos'),
+        formulas: document.getElementById('view-formulas')
+    };
     const searchInput = document.getElementById('searchBar');
-    if (searchInput) {
-        searchInput.addEventListener('input', function () {
-            const term = this.value.toLowerCase();
-            const items = document.querySelectorAll('.shortcut-list li');
-            items.forEach((item) => {
-                // Each shortcut list item may have text and code.
-                if (item.textContent.toLowerCase().includes(term)) {
-                    item.style.display = 'flex';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
+    const backToTopBtn = document.getElementById('backToTop');
+
+    /**
+     * Activa la pestaña indicada y actualiza la interfaz de búsqueda.
+     * @param {string} name Nombre de la vista a mostrar (atajos|formulas)
+     */
+    function setTab(name) {
+        // Resaltar pestaña activa
+        tabs.forEach(tab => {
+            tab.classList.toggle('active', tab.dataset.tab === name);
+        });
+        // Mostrar vista correspondiente
+        Object.entries(views).forEach(([key, el]) => {
+            if (key === name) {
+                el.classList.add('view--active');
+            } else {
+                el.classList.remove('view--active');
+            }
+        });
+        // Actualizar placeholder y limpiar filtro
+        if (name === 'atajos') {
+            searchInput.placeholder = 'Buscar atajo…';
+        } else {
+            searchInput.placeholder = 'Buscar fórmula…';
+        }
+        searchInput.value = '';
+        filterList();
+        // Desplazarse al inicio de la página
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Asigna manejadores de evento a las pestañas
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => setTab(tab.dataset.tab));
+    });
+
+    /**
+     * Filtra los elementos visibles de la lista según el término de búsqueda.
+     */
+    function filterList() {
+        const term = searchInput.value.toLowerCase().trim();
+        const activeView = document.querySelector('.view--active');
+        if (!activeView) return;
+        const items = activeView.querySelectorAll('li');
+        items.forEach(li => {
+            const text = li.textContent.toLowerCase();
+            li.style.display = text.includes(term) ? '' : 'none';
         });
     }
 
-    // Intersection Observer to highlight active navigation links
-    const sections = document.querySelectorAll('main section');
-    const navLinks = document.querySelectorAll('.navbar .nav-list a');
-    const observerOptions = {
-        rootMargin: '0px 0px -50% 0px',
-        threshold: 0.25,
-    };
-    const sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                const id = entry.target.getAttribute('id');
-                navLinks.forEach((link) => link.classList.remove('active'));
-                const activeLink = document.querySelector(`.navbar .nav-list a[href="#${id}"]`);
-                if (activeLink) {
-                    activeLink.classList.add('active');
-                }
-            }
-        });
-    }, observerOptions);
-    sections.forEach((section) => {
-        sectionObserver.observe(section);
-    });
+    // Filtra en cada entrada del usuario
+    searchInput.addEventListener('input', filterList);
 
-    // Back to top button functionality
-    const backToTopBtn = document.getElementById('backToTop');
+    // Mostrar u ocultar el botón “volver arriba” en función del desplazamiento
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 400) {
+        if (window.scrollY > 600) {
             backToTopBtn.style.display = 'block';
         } else {
             backToTopBtn.style.display = 'none';
         }
     });
+
+    // Manejador del botón para volver arriba
     backToTopBtn.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // Toggle between atajo sections and formulas section
-    const formulasLink = document.getElementById('formulas-link');
-    const allNavLinks = document.querySelectorAll('.navbar .nav-list a');
-    const atajoLinks = document.querySelectorAll('.atajo-link');
-    const formulasSection = document.getElementById('excel-formulas');
-    const atajoSections = document.querySelectorAll('.atajo-section');
-    const searchContainer = document.querySelector('.search-container');
-
-    function showFormulas() {
-        // Hide all atajo sections and show formulas
-        atajoSections.forEach((section) => section.classList.add('hidden'));
-        formulasSection.classList.remove('hidden');
-        // Hide search bar for formulas
-        if (searchContainer) {
-            searchContainer.style.display = 'none';
-        }
-        // Set active nav link styling manually
-        allNavLinks.forEach((link) => link.classList.remove('active'));
-        if (formulasLink) {
-            formulasLink.classList.add('active');
-        }
-    }
-
-    function showAtajos() {
-        // Show all atajo sections and hide formulas
-        atajoSections.forEach((section) => section.classList.remove('hidden'));
-        formulasSection.classList.add('hidden');
-        // Show search bar again
-        if (searchContainer) {
-            searchContainer.style.display = 'block';
-        }
-    }
-
-    if (formulasLink) {
-        formulasLink.addEventListener('click', function (e) {
-            e.preventDefault();
-            showFormulas();
-            // Scroll to formulas section
-            formulasSection.scrollIntoView({ behavior: 'smooth' });
-        });
-    }
-
-    atajoLinks.forEach((link) => {
-        link.addEventListener('click', function () {
-            // Ensure atajo sections are visible when any atajo link is clicked
-            showAtajos();
-        });
-    });
+    // Establece la pestaña predeterminada al cargar
+    setTab('atajos');
 });
