@@ -13,6 +13,34 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     const searchInput = document.getElementById('searchBar');
     const backToTopBtn = document.getElementById('backToTop');
+    // Referencias a elementos del menú flotante y tabla de contenidos de fórmulas
+    const menuItems = document.querySelectorAll('.floating-menu .menu-item');
+    const tocLinks = document.querySelectorAll('.toc a');
+
+    /**
+     * Filtra grupos de fórmulas por categoría.
+     * Si se pasa 'all' se muestran todas las categorías.
+     * @param {string} cat Identificador de la categoría (ej. f-texto) o 'all'.
+     */
+    function setCategory(cat) {
+        // Actualizar clase activa en el menú de la tabla de contenidos
+        tocLinks.forEach(link => {
+            const match = link.dataset.category === cat || (cat === 'all' && link.dataset.category === 'all');
+            link.classList.toggle('active', match);
+        });
+        // Mostrar u ocultar grupos de fórmulas
+        const groups = document.querySelectorAll('#view-formulas .formula-group');
+        groups.forEach(group => {
+            if (cat === 'all') {
+                group.style.display = '';
+            } else {
+                group.style.display = group.id === cat ? '' : 'none';
+            }
+        });
+        // Desplaza al inicio del área de fórmulas para mejorar la navegación
+        const formulasView = document.getElementById('view-formulas');
+        formulasView.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
 
     /**
      * Activa la pestaña indicada y actualiza la interfaz de búsqueda.
@@ -22,6 +50,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // Resaltar pestaña activa
         tabs.forEach(tab => {
             tab.classList.toggle('active', tab.dataset.tab === name);
+        });
+        // Resaltar también el botón en el menú flotante
+        menuItems.forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.tab === name);
         });
         // Mostrar vista correspondiente
         Object.entries(views).forEach(([key, el]) => {
@@ -36,6 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
             searchInput.placeholder = 'Buscar atajo…';
         } else {
             searchInput.placeholder = 'Buscar fórmula…';
+            // Restablecer las categorías cuando se cambia a la vista de fórmulas
+            setCategory('all');
         }
         searchInput.value = '';
         filterList();
@@ -65,18 +99,42 @@ document.addEventListener('DOMContentLoaded', () => {
     // Filtra en cada entrada del usuario
     searchInput.addEventListener('input', filterList);
 
-    // Mostrar u ocultar el botón “volver arriba” en función del desplazamiento
+    // Mostrar u ocultar elementos y animar el fondo en función del desplazamiento
     window.addEventListener('scroll', () => {
+        // Botón volver arriba
         if (window.scrollY > 600) {
             backToTopBtn.style.display = 'block';
         } else {
             backToTopBtn.style.display = 'none';
+        }
+        // Animación del fondo: ajustar la posición vertical del gradiente
+        const pos = window.scrollY * 0.02;
+        document.body.style.backgroundPosition = `0 ${pos}px`;
+        // Cambiar la visibilidad del menú flotante según el desplazamiento
+        if (window.scrollY > 200) {
+            document.body.classList.add('scrolled');
+        } else {
+            document.body.classList.remove('scrolled');
         }
     });
 
     // Manejador del botón para volver arriba
     backToTopBtn.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Asigna manejadores al menú flotante de cambio de vista
+    menuItems.forEach(btn => {
+        btn.addEventListener('click', () => setTab(btn.dataset.tab));
+    });
+
+    // Asigna manejadores al menú de categorías de fórmulas
+    tocLinks.forEach(link => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault();
+            const cat = link.dataset.category;
+            setCategory(cat);
+        });
     });
 
     // Establece la pestaña predeterminada al cargar

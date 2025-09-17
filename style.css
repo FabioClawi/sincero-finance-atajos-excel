@@ -1,9 +1,11 @@
 /*
  * Estilos para el sitio “Recursos para Excel” de Sincero Finance.
- * Este archivo define una interfaz minimalista con énfasis en los colores
- * corporativos: un dorado vibrante para los acentos principales y un azul
- * tecnológico claro para detalles y enlaces. Utiliza la familia tipográfica
- * Poppins para mantener coherencia con la identidad de marca de Sincero.
+ * Este archivo define una interfaz minimalista basada en una paleta oscura.
+ * Los títulos y subtítulos se presentan en blanco para una lectura clara.
+ * Las líneas decorativas y detalles utilizan un dorado suave (#DAA520) y
+ * un verde esmeralda (#00A86B) de forma sutil, mientras que el azul
+ * corporativo (#56C0E0) resalta algunos elementos interactivos. La tipografía
+ * Poppins mantiene la coherencia con la identidad visual de Sincero Finance.
  */
 
 /* Variables de color y base */
@@ -11,8 +13,11 @@
     --bg: #0a0f1d;
     --text: #f5f5f5;
     --muted: #b8c0cc;
-    --gold: #FFD700;
-    --tech-blue: #56C0E0;
+    --gold: #FFD700; /* legacy accent, kept for occasional highlights */
+    --tech-blue: #56C0E0; /* color corporativo original */
+    /* Nuevos colores sutiles para detalles */
+    --accent-gold: #DAA520; /* dorado oscuro más suave */
+    --accent-green: #00A86B; /* verde esmeralda para elementos interactivos */
     --card: #0f172a;
     --border: #1f2937;
 }
@@ -25,7 +30,13 @@
 }
 
 body {
+    /* Fondo base oscuro con superposición de gradiente ligero.
+       El gradiente se moverá verticalmente mediante JavaScript al desplazarse. */
     background: var(--bg);
+    background-image: linear-gradient(to bottom, rgba(218, 165, 32, 0.07), rgba(0, 168, 107, 0.07));
+    background-attachment: fixed;
+    background-size: 100% 400%;
+    background-position: 0 0;
     color: var(--text);
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
@@ -62,7 +73,8 @@ body {
     font-size: 2rem;
     font-weight: 600;
     letter-spacing: 0.3px;
-    color: var(--gold);
+    /* El título principal en blanco para no saturar con el dorado */
+    color: var(--text);
 }
 
 .brand-sub {
@@ -70,7 +82,8 @@ body {
     font-weight: 500;
     letter-spacing: 0.4px;
     text-transform: uppercase;
-    color: var(--tech-blue);
+    /* Subtítulo en el nuevo verde para un toque fresco */
+    color: var(--accent-green);
     margin-top: 2px;
 }
 
@@ -98,17 +111,20 @@ body {
 
 .tab:hover {
     color: var(--text);
+    /* Suave resaltado al pasar el cursor utilizando el azul corporativo original */
     background: rgba(86, 192, 224, 0.08);
 }
 
 .tab.active {
-    color: #000;
-    background: var(--gold);
+    /* La pestaña activa usa el verde esmeralda; el texto oscuro para contrastar */
+    color: #0f172a;
+    background: var(--accent-green);
 }
 
 .tabs-underline {
     height: 2px;
-    background: linear-gradient(90deg, var(--tech-blue), var(--gold));
+    /* Subrayado con gradiente entre dorado oscuro y verde */
+    background: linear-gradient(90deg, var(--accent-gold), var(--accent-green));
     margin-top: 8px;
     opacity: 0.5;
     width: 100%;
@@ -160,7 +176,19 @@ body {
     margin-bottom: 0.75rem;
     font-size: 1.7rem;
     font-weight: 600;
-    color: var(--gold);
+    color: var(--text);
+    position: relative;
+}
+
+/* Línea decorativa bajo los títulos de sección */
+.section h2::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    margin-top: 6px;
+    background: linear-gradient(90deg, var(--accent-gold), var(--accent-green));
+    border-radius: 3px;
 }
 
 .shortcut-list {
@@ -214,6 +242,12 @@ body {
     background: rgba(86, 192, 224, 0.08);
 }
 
+/* Enlace activo en la tabla de contenidos de fórmulas */
+.toc a.active {
+    background: var(--accent-green);
+    color: #0f172a;
+}
+
 /* Grupos de fórmulas */
 .formula-group {
     background: var(--card);
@@ -227,32 +261,76 @@ body {
     margin-bottom: 0.5rem;
     font-size: 1.4rem;
     font-weight: 600;
-    color: var(--gold);
+    color: var(--text);
+    position: relative;
+    padding-bottom: 4px;
+}
+
+/* Línea sutil debajo de los títulos de grupo de fórmulas */
+.formula-group h3::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent-gold), var(--accent-green));
+    border-radius: 2px;
 }
 
 .formula-list {
     list-style: none;
     padding-left: 0;
+    display: grid;
+    /* Aumentamos el espacio entre las tarjetas para evitar sensación de
+       saturación en la vista de fórmulas */
+    gap: 14px;
+    /* Hacemos las tarjetas más anchas para mejorar la legibilidad y evitar que
+       el contenido se vea estrecho. Las columnas se adaptan automáticamente
+       al ancho disponible. */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 }
 
 .formula-list li {
-    margin-bottom: 8px;
+    /* Convertimos cada elemento en una tarjeta para mejorar la lectura */
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent-green);
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
 }
 
 .formula-list li code {
     background: #0b1427;
     border: 1px solid var(--border);
     padding: 2px 6px;
-    border-radius: 8px;
-    color: var(--muted);
-    font-size: 0.9rem;
+    border-radius: 6px;
+    color: var(--tech-blue);
+    font-size: 0.85rem;
+}
+
+/* Ajustes de tipografía dentro de las tarjetas de fórmulas */
+.formula-list li b {
+    color: var(--text);
+}
+
+.formula-list li i {
+    color: var(--accent-gold);
+    font-style: normal;
+    margin-left: 4px;
 }
 
 @media (min-width: 800px) {
     .formula-list {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 8px;
+        /* En pantallas amplias, usamos columnas auto-ajustables para espaciar
+           mejor las tarjetas y evitar saturación visual */
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 12px;
     }
 }
 
@@ -262,7 +340,7 @@ body {
     bottom: 40px;
     right: 40px;
     display: none;
-    background: var(--gold);
+    background: var(--accent-gold);
     color: #000;
     padding: 0.5rem 0.7rem;
     border: none;
@@ -276,6 +354,51 @@ body {
 
 .back-to-top:hover {
     filter: brightness(0.92);
+}
+
+/* Menú flotante para cambiar entre las secciones principal (atajos/fórmulas).
+   Se muestra cuando el usuario se desplaza hacia abajo y se oculta al principio. */
+.floating-menu {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 180;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.floating-menu .menu-item {
+    all: unset;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 12px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--tech-blue);
+    font-weight: 500;
+    text-align: center;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.floating-menu .menu-item:hover {
+    background: rgba(86, 192, 224, 0.1);
+    color: var(--text);
+}
+
+/* Botón activo en el menú flotante */
+.floating-menu .menu-item.active {
+    background: var(--accent-green);
+    color: #0f172a;
+}
+
+/* Cuando se agrega la clase 'scrolled' al body, el menú flotante se hace visible */
+body.scrolled .floating-menu {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 /* Pie de página */

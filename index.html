@@ -22,6 +22,10 @@
     </header>
 
     <!-- Top level tabs for navigating between shortcuts and formulas -->
+    <!-- Tabbed navigation between sections.  Sticky at the top on desktop, but
+         a floating quick-access menu is added later in the document so users can
+         toggle between views while scrolled deep into a page.  The underline
+         uses our subtle accent gradient. -->
     <nav class="tabs">
         <button class="tab active" data-tab="atajos">Atajos</button>
         <button class="tab" data-tab="formulas">Fórmulas</button>
@@ -203,81 +207,140 @@
         <!-- View for Excel formulas -->
         <section id="view-formulas" class="view">
             <h2 class="h2">Fórmulas</h2>
-            <!-- Table of contents for formula categories -->
+            <!-- Table of contents for formula categories.  A new category
+                 “Condicionales” agrupa las funciones basadas en criterios. -->
             <nav class="toc">
-                <a href="#f-logico">Lógicas y manejo de errores</a>
-                <a href="#f-texto">Texto</a>
-                <a href="#f-busqueda">Búsqueda y referencia</a>
-                <a href="#f-matematicas">Matemáticas / Estadística</a>
-                <a href="#f-fecha">Fecha y hora</a>
+                <!-- Botón para mostrar todas las categorías de fórmulas. -->
+                <a href="#all" data-category="all" class="active">Todas</a>
+                <a href="#f-logico" data-category="f-logico">Lógicas y errores</a>
+                <a href="#f-texto" data-category="f-texto">Texto</a>
+                <a href="#f-busqueda" data-category="f-busqueda">Búsqueda &amp; referencia</a>
+                <a href="#f-matematicas" data-category="f-matematicas">Matemáticas &amp; estadística</a>
+                <a href="#f-condicional" data-category="f-condicional">Condicionales</a>
+                <a href="#f-fecha" data-category="f-fecha">Fecha &amp; hora</a>
             </nav>
 
             <!-- Lógicas y manejo de errores -->
-            <section id="f-logico" class="formula-group">
-                <h3>Lógicas y manejo de errores</h3>
+            <details id="f-logico" class="formula-group">
+                <summary>Lógicas y manejo de errores</summary>
                 <ul class="formula-list">
                     <li><b>SI</b> — Evalúa una condición y devuelve un valor si es verdadera y otro si es falsa. <i>Patrón:</i> <code>SI(condición, valor_si_verdadero, valor_si_falso)</code></li>
                     <li><b>Y</b> — Devuelve VERDADERO si todas las condiciones son verdaderas. <i>Patrón:</i> <code>Y(cond1, cond2,…)</code></li>
                     <li><b>O</b> — Devuelve VERDADERO si alguna condición es verdadera. <i>Patrón:</i> <code>O(cond1, cond2,…)</code></li>
                     <li><b>SI.ERROR</b> — Devuelve un valor alternativo cuando una expresión genera un error. <i>Patrón:</i> <code>SI.ERROR(expr, valor_si_error)</code></li>
                 </ul>
-            </section>
+            </details>
 
             <!-- Formulas de texto -->
-            <section id="f-texto" class="formula-group">
-                <h3>Texto</h3>
+            <details id="f-texto" class="formula-group">
+                <summary>Texto</summary>
                 <ul class="formula-list">
                     <li><b>TEXTO</b> — Da formato a un número como texto. <i>Patrón:</i> <code>TEXTO(valor, "formato")</code></li>
                     <li><b>CONCAT</b> / <b>CONCATENAR</b> — Une textos de varias celdas en una sola. <i>Patrón:</i> <code>CONCAT(texto1, texto2,…)</code></li>
-                    <li><b>IZQUIERDA</b> — Extrae N caracteres desde la izquierda de un texto. <i>Patrón:</i> <code>IZQUIERDA(texto, n)</code></li>
-                    <li><b>DERECHA</b> — Extrae N caracteres desde la derecha de un texto. <i>Patrón:</i> <code>DERECHA(texto, n)</code></li>
-                    <li><b>LARGO</b> — Devuelve la longitud de una cadena de texto. <i>Patrón:</i> <code>LARGO(texto)</code></li>
-                    <li><b>HALLAR</b> — Devuelve la posición inicial de un texto dentro de otro texto. <i>Patrón:</i> <code>HALLAR(texto_buscado, dentro_del_texto, [inicio])</code></li>
-                    <li><b>SUSTITUIR</b> — Sustituye texto específico por texto nuevo en una cadena. <i>Patrón:</i> <code>SUSTITUIR(texto, texto_original, texto_nuevo, [núm_de_ocurrencia])</code></li>
+                    <li><b>IZQUIERDA</b> — Extrae N caracteres desde la izquierda de un texto【703935696952100†L148-L152】. <i>Patrón:</i> <code>IZQUIERDA(texto, n)</code></li>
+                    <li><b>DERECHA</b> — Extrae N caracteres desde la derecha de un texto【584597639123524†L145-L151】. <i>Patrón:</i> <code>DERECHA(texto, n)</code></li>
+                    <li><b>LARGO</b> — Devuelve la longitud de una cadena de texto【705381333412676†L135-L146】. <i>Patrón:</i> <code>LARGO(texto)</code></li>
+                    <li><b>HALLAR</b> — Devuelve la posición inicial de un texto dentro de otro texto【718109329976163†L145-L168】. <i>Patrón:</i> <code>HALLAR(texto_buscado, dentro_del_texto, [inicio])</code></li>
+                    <li><b>SUSTITUIR</b> — Sustituye texto específico por texto nuevo en una cadena【481778781079754†L140-L143】. <i>Patrón:</i> <code>SUSTITUIR(texto, texto_original, texto_nuevo, [número_ocurrencia])</code></li>
+                    <!-- Nueva fórmula de texto: EXTRAE devuelve caracteres según posición y longitud -->
+                    <li><b>EXTRAE</b> — Devuelve un número específico de caracteres de una cadena de texto, comenzando en la posición indicada【935525875290949†L138-L141】. <i>Patrón:</i> <code>EXTRAE(texto, inicio, núm_caracteres)</code></li>
+                    <li><b>MAYUSC</b> — Convierte todas las letras de un texto a mayúsculas. <i>Patrón:</i> <code>MAYUSC(texto)</code></li>
+                    <li><b>MINUSC</b> — Convierte todas las letras de un texto a minúsculas. <i>Patrón:</i> <code>MINUSC(texto)</code></li>
+                    <li><b>NOMPROPIO</b> — Convierte la primera letra de cada palabra a mayúscula y las demás a minúscula. <i>Patrón:</i> <code>NOMPROPIO(texto)</code></li>
+                    <li><b>REEMPLAZAR</b> — Reemplaza parte de un texto por otro a partir de una posición y longitud. <i>Patrón:</i> <code>REEMPLAZAR(texto, inicio, num_caracteres, texto_nuevo)</code></li>
+                    <li><b>ESPACIOS</b> — Elimina los espacios innecesarios de un texto, dejando solo un espacio entre palabras. <i>Patrón:</i> <code>ESPACIOS(texto)</code></li>
                 </ul>
-            </section>
+            </details>
 
             <!-- Formulas de búsqueda y referencia -->
-            <section id="f-busqueda" class="formula-group">
-                <h3>Búsqueda y referencia</h3>
+            <details id="f-busqueda" class="formula-group">
+                <summary>Búsqueda y referencia</summary>
                 <ul class="formula-list">
                     <li><b>BUSCARV</b> — Busca un valor en la primera columna de una tabla y devuelve un valor de la misma fila. <i>Patrón:</i> <code>BUSCARV(valor, tabla, col, [aprox])</code></li>
                     <li><b>BUSCARX</b> — Realiza una búsqueda flexible en filas o columnas. <i>Patrón:</i> <code>BUSCARX(valor, buscar_en, devolver_desde, [si_no], [modo])</code></li>
                     <li><b>INDICE</b> — Devuelve el valor de una celda en un rango según la fila y la columna especificadas. <i>Patrón:</i> <code>INDICE(rango, fila, [col])</code></li>
                     <li><b>COINCIDIR</b> — Devuelve la posición de un valor dentro de un rango. <i>Patrón:</i> <code>COINCIDIR(valor, rango, [tipo])</code></li>
+                    <li><b>SUMAPRODUCTO</b> — Calcula la suma de los productos de las entradas correspondientes en dos o más matrices【418171428656056†L135-L137】. <i>Patrón:</i> <code>SUMAPRODUCTO(matriz1, matriz2,…)</code></li>
+                    <li><b>INDIRECTO</b> — Devuelve la referencia especificada por una cadena de texto. <i>Patrón:</i> <code>INDIRECTO(ref_texto, [a1])</code></li>
+                    <li><b>DESREF</b> — Devuelve una referencia desplazada desde una celda inicial; puede devolver una celda o un rango. <i>Patrón:</i> <code>DESREF(ref, filas, columnas, [alto], [ancho])</code></li>
+                    <li><b>VALOR.NUMERO</b> — Convierte una cadena de texto que representa un número en un valor numérico independientemente de la configuración regional【153604347766644†L138-L142】. <i>Patrón:</i> <code>VALOR.NUMERO(texto, [sep_decimal], [sep_grupos])</code></li>
                 </ul>
-            </section>
+            </details>
 
             <!-- Formulas matemáticas y estadísticas -->
-            <section id="f-matematicas" class="formula-group">
-                <h3>Matemáticas / Estadística</h3>
+            <details id="f-matematicas" class="formula-group">
+                <summary>Matemáticas y estadística</summary>
                 <ul class="formula-list">
                     <li><b>SUMA</b> — Suma valores individuales, referencias o rangos de celdas. <i>Patrón:</i> <code>SUMA(rango)</code></li>
                     <li><b>PROMEDIO</b> — Devuelve la media aritmética de un rango de números. <i>Patrón:</i> <code>PROMEDIO(rango)</code></li>
-                    <li><b>MAX</b> — Devuelve el valor máximo de un conjunto de valores. <i>Patrón:</i> <code>MAX(número1, número2,…)</code></li>
+                    <li><b>MAX</b> — Devuelve el valor máximo de un conjunto de valores【325043969870284†L150-L154】. <i>Patrón:</i> <code>MAX(número1, número2,…)</code></li>
                     <li><b>MIN</b> — Devuelve el valor mínimo de un conjunto de valores. <i>Patrón:</i> <code>MIN(número1, número2,…)</code></li>
                     <li><b>REDONDEAR</b> — Redondea un número a la cantidad de decimales especificada. <i>Patrón:</i> <code>REDONDEAR(número, decimales)</code></li>
                     <li><b>CONTAR</b> — Cuenta las celdas que contienen números. <i>Patrón:</i> <code>CONTAR(rango)</code></li>
-                    <li><b>CONTARA</b> — Cuenta celdas no vacías en un rango. <i>Patrón:</i> <code>CONTARA(rango)</code></li>
+                    <li><b>CONTARA</b> — Cuenta celdas no vacías en un rango【664325217068802†L25-L55】. <i>Patrón:</i> <code>CONTARA(rango)</code></li>
+                    <li><b>ABS</b> — Devuelve el valor absoluto de un número, es decir, el número sin su signo【27004298100864†L139-L141】. <i>Patrón:</i> <code>ABS(número)</code></li>
+                    <li><b>PRODUCTO</b> — Devuelve el producto de todos los números proporcionados. <i>Patrón:</i> <code>PRODUCTO(número1, número2,…)</code></li>
+                    <li><b>MOD</b> — Devuelve el resto después de dividir un número entre el divisor. <i>Patrón:</i> <code>MOD(número, divisor)</code></li>
+                    <li><b>POTENCIA</b> — Devuelve el resultado de elevar un número a una potencia. <i>Patrón:</i> <code>POTENCIA(base, exponente)</code></li>
+                    <li><b>RAIZ</b> — Devuelve la raíz cuadrada positiva de un número. <i>Patrón:</i> <code>RAIZ(número)</code></li>
+                    <li><b>INT</b> — Devuelve la parte entera de un número decimal redondeando hacia abajo. <i>Patrón:</i> <code>INT(número)</code></li>
+                    <li><b>JERARQUIA</b> — Devuelve la posición (ranking) de un número dentro de una lista de números【506982389865431†L150-L152】. <i>Patrón:</i> <code>JERARQUIA(número, rango, [orden])</code></li>
+                    <li><b>ALEATORIO.ENTRE</b> — Devuelve un número entero aleatorio entre los valores inferior y superior especificados. <i>Patrón:</i> <code>ALEATORIO.ENTRE(inferior, superior)</code></li>
+                    <!-- Fórmulas matemáticas adicionales -->
+                    <li><b>REDONDEAR.MAS</b> — Redondea un número hacia arriba, alejándolo de cero【315128192888800†L140-L142】. <i>Patrón:</i> <code>REDONDEAR.MAS(número, núm_decimales)</code></li>
+                    <li><b>REDONDEAR.MENOS</b> — Redondea un número hacia abajo, acercándolo a cero【26297301274386†L138-L142】. <i>Patrón:</i> <code>REDONDEAR.MENOS(número, núm_decimales)</code></li>
+                    <li><b>MEDIANA</b> — Devuelve la mediana de los números dados; es el valor que se encuentra en medio de un conjunto de números【128893424147305†L148-L151】. <i>Patrón:</i> <code>MEDIANA(número1, número2, …)</code></li>
+                    <li><b>MODA</b> — Devuelve el valor que se repite con mayor frecuencia en un rango de datos【428865673112129†L135-L143】. <i>Patrón:</i> <code>MODA(número1, número2, …)</code></li>
+                    <li><b>DESVEST</b> — Calcula la desviación estándar de una muestra【710882887800549†L135-L136】. <i>Patrón:</i> <code>DESVEST(número1, número2, …)</code></li>
+                    <li><b>ALEATORIO</b> — Devuelve un número real aleatorio mayor o igual que 0 y menor que 1【228581187812171†L148-L152】. <i>Patrón:</i> <code>ALEATORIO()</code></li>
+                    <li><b>SUBTOTALES</b> — Devuelve un subtotal en una lista o base de datos【4819453831502†L148-L154】. <i>Patrón:</i> <code>SUBTOTALES(núm_función, ref1, [ref2], …)</code></li>
                 </ul>
-            </section>
+            </details>
+
+            <!-- Formulas condicionales -->
+            <details id="f-condicional" class="formula-group">
+                <summary>Condicionales</summary>
+                <ul class="formula-list">
+                    <li><b>SUMAR.SI</b> — Suma los valores de un rango que cumplen una condición【426146774332217†L145-L149】. <i>Patrón:</i> <code>SUMAR.SI(rango, criterio, [rango_suma])</code></li>
+                    <li><b>SUMAR.SI.CONJUNTO</b> — Suma los valores de un rango que cumplen varios criterios【273862720520747†L145-L149】. <i>Patrón:</i> <code>SUMAR.SI.CONJUNTO(rango_suma, rango_crit1, crit1, …)</code></li>
+                    <li><b>CONTAR.SI</b> — Cuenta las celdas en un rango que cumplen una condición【728311611195737†L135-L167】. <i>Patrón:</i> <code>CONTAR.SI(rango, criterio)</code></li>
+                    <li><b>CONTAR.SI.CONJUNTO</b> — Cuenta las celdas que cumplen varios criterios【15702600221654†L145-L166】. <i>Patrón:</i> <code>CONTAR.SI.CONJUNTO(rango1, criterio1, rango2, criterio2,…)</code></li>
+                    <li><b>PROMEDIO.SI</b> — Calcula el promedio de los valores en un rango que cumplen una condición【685176714977804†L148-L151】. <i>Patrón:</i> <code>PROMEDIO.SI(rango_promedio, rango_criterio, criterio)</code></li>
+                    <li><b>CONTAR.BLANCO</b> — Cuenta el número de celdas vacías en un rango. <i>Patrón:</i> <code>CONTAR.BLANCO(rango)</code></li>
+                    <!-- Fórmulas condicionales adicionales -->
+                    <li><b>SI.CONJUNTO</b> — Comprueba múltiples condiciones y devuelve el valor correspondiente a la primera condición verdadera【950934008105965†L145-L148】. <i>Patrón:</i> <code>SI.CONJUNTO(cond1, valor1, cond2, valor2, …)</code></li>
+                    <li><b>PROMEDIO.SI.CONJUNTO</b> — Devuelve el promedio de las celdas que cumplen varios criterios【337145431849388†L148-L152】. <i>Patrón:</i> <code>PROMEDIO.SI.CONJUNTO(rango_promedio, rango_crit1, crit1, …)</code></li>
+                </ul>
+            </details>
 
             <!-- Formulas de fecha y hora -->
-            <section id="f-fecha" class="formula-group">
-                <h3>Fecha y hora</h3>
+            <details id="f-fecha" class="formula-group">
+                <summary>Fecha y hora</summary>
                 <ul class="formula-list">
                     <li><b>HOY</b> — Devuelve la fecha actual. <i>Patrón:</i> <code>HOY()</code></li>
                     <li><b>AHORA</b> — Devuelve la fecha y hora actual. <i>Patrón:</i> <code>AHORA()</code></li>
-                    <li><b>DIAS</b> — Devuelve el número de días entre dos fechas. <i>Patrón:</i> <code>DIAS(fecha_final, fecha_inicial)</code></li>
-                    <li><b>DIASEM</b> — Devuelve el día de la semana como un número entre 1 (domingo) y 7 (sábado). <i>Patrón:</i> <code>DIASEM(fecha, [tipo])</code></li>
+                    <li><b>DIAS</b> — Devuelve el número de días entre dos fechas【270472287350548†L139-L142】. <i>Patrón:</i> <code>DIAS(fecha_final, fecha_inicial)</code></li>
+                    <li><b>DIASEM</b> — Devuelve el día de la semana como un número entre 1 (domingo) y 7 (sábado)【151521196237895†L150-L155】. <i>Patrón:</i> <code>DIASEM(fecha, [tipo])</code></li>
                     <li><b>DIA.LAB</b> — Calcula una fecha laboral desplazada, excluyendo fines de semana y festivos. <i>Patrón:</i> <code>DIA.LAB(inicio, días, [festivos])</code></li>
+                    <li><b>MES</b> — Devuelve el mes de una fecha representada por un número de serie (1 = enero, 12 = diciembre)【353771291556841†L138-L141】. <i>Patrón:</i> <code>MES(núm_de_serie)</code></li>
+                    <li><b>AÑO</b> — Devuelve el año correspondiente a una fecha como número de cuatro dígitos【850118950635223†L140-L142】. <i>Patrón:</i> <code>AÑO(núm_de_serie)</code></li>
+                    <li><b>FECHA</b> — Combina año, mes y día en una fecha válida【160847189372569†L145-L155】. <i>Patrón:</i> <code>FECHA(año, mes, día)</code></li>
+                    <li><b>SIFECHA</b> — Calcula el número de días, meses o años entre dos fechas【833624702460401†L145-L146】. <i>Patrón:</i> <code>SIFECHA(fecha_inicial, fecha_final, unidad)</code></li>
                 </ul>
-            </section>
+            </details>
         </section>
     </main>
 
     <!-- Back to top floating button -->
     <button id="backToTop" class="back-to-top" aria-label="Volver arriba">↑</button>
+
+    <!-- Floating menu for quickly toggling between atajos y fórmulas even cuando
+         el usuario está desplazado hacia abajo. Este menú se oculta en pantallas
+         pequeñas si no hay espacio suficiente y solo aparece al desplazarse. -->
+    <nav class="floating-menu" aria-label="Cambio de sección">
+        <button class="menu-item" data-tab="atajos" title="Ver atajos">Atajos</button>
+        <button class="menu-item" data-tab="formulas" title="Ver fórmulas">Fórmulas</button>
+    </nav>
 
     <script src="script.js"></script>
     <!-- Footer with copyright -->
